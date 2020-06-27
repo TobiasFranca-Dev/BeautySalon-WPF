@@ -3,10 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BeautySalon"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Beauty Salon" Height="600" Width="950" WindowState="Maximized">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="Blue">
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10,5">
+                <StackPanel Width="150">
+                    <Button Content="Configurações"/>
+                    <Button Content="Preferências"/>
+                    <Button Content="Ajuda"/>
+                    <Separator/>
+                    <Button Content="Sair"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+        </Grid>
+
+        <WrapPanel Grid.Row="1">
+
+            <Button Margin="10" Height="70" Width="80" Padding="0">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="Calendar" Height="35" Width="35" HorizontalAlignment="Center" Foreground="White"/>
+                    <Label Content="Agenda" VerticalAlignment="Bottom" Foreground="White"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="10" Height="70" Width="80" Padding="0" Command="{Binding ClientesCommand}">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="People" Height="35" Width="35" HorizontalAlignment="Center" Foreground="White"/>
+                    <Label Content="Clientes" VerticalAlignment="Bottom" Foreground="White"/>
+                </StackPanel>
+            </Button>
+
+        </WrapPanel>
+
+        <Grid Grid.Row="2" Background="LightGray">
+            <Label Content="{Binding NomeUsuario}" VerticalAlignment="Center"/>
+        </Grid>
+
     </Grid>
 </Window>
